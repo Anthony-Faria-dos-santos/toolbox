@@ -1,0 +1,74 @@
+# =====================================================================
+# pg_service.conf  — Template pour Supabase
+# =====================================================================
+# À copier sous :
+#   Linux / macOS / WSL : ~/.pg_service.conf        (chmod 600)
+#   Windows (native)    : %APPDATA%\postgresql\.pg_service.conf
+#
+# Remplacer :
+#   PROJECT_REF  -> ta ref projet Supabase (chaîne du style "abcdefghijklmnop")
+#   REGION       -> ta région AWS (ex: eu-west-3, eu-central-1, us-east-1)
+#
+# Usage après install :
+#   psql service=supabase-prod
+#   psql service=supabase-prod -f sql/01_install.sql
+#   psql service=supabase-prod -c "select jobname, schedule from cron.job"
+# =====================================================================
+
+
+# ---------------------------------------------------------------------
+# Session pooler (IPv4, port 5432) — DEFAUT RECOMMANDE
+# Compatible avec pg_sleep long, LISTEN/NOTIFY, prepared statements.
+# ---------------------------------------------------------------------
+[supabase-prod]
+host=aws-0-REGION.pooler.supabase.com
+port=5432
+dbname=postgres
+user=postgres.PROJECT_REF
+sslmode=require
+application_name=psql-supabase-prod
+connect_timeout=10
+
+
+# ---------------------------------------------------------------------
+# Connexion directe (IPv6 uniquement depuis fin 2024)
+# A n'utiliser que si ton réseau supporte IPv6.
+# ---------------------------------------------------------------------
+[supabase-prod-direct]
+host=db.PROJECT_REF.supabase.co
+port=5432
+dbname=postgres
+user=postgres
+sslmode=require
+application_name=psql-supabase-prod-direct
+connect_timeout=10
+
+
+# ---------------------------------------------------------------------
+# Transaction pooler (IPv4, port 6543)
+# Pour les workloads serverless courts (Edge Functions, Lambda).
+# INCOMPATIBLE avec : pg_sleep long, prepared statements, LISTEN/NOTIFY,
+# transactions longues. Ne pas utiliser pour 02_test_forced.sql.
+# ---------------------------------------------------------------------
+[supabase-prod-tx]
+host=aws-0-REGION.pooler.supabase.com
+port=6543
+dbname=postgres
+user=postgres.PROJECT_REF
+sslmode=require
+application_name=psql-supabase-prod-tx
+connect_timeout=10
+
+
+# ---------------------------------------------------------------------
+# Exemple pour un second environnement (staging/dev)
+# Décommenter et adapter au besoin.
+# ---------------------------------------------------------------------
+# [supabase-staging]
+# host=aws-0-REGION.pooler.supabase.com
+# port=5432
+# dbname=postgres
+# user=postgres.STAGING_PROJECT_REF
+# sslmode=require
+# application_name=psql-supabase-staging
+# connect_timeout=10

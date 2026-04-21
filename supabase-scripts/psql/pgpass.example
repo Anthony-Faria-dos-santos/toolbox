@@ -1,0 +1,38 @@
+# =====================================================================
+# .pgpass  — Template de mots de passe psql pour Supabase
+# =====================================================================
+# Format : hostname:port:database:username:password
+# Le caractère ':' dans un champ doit être échappé par '\:'
+# Le caractère '\' doit être échappé par '\\'
+#
+# À copier sous :
+#   Linux / macOS / WSL : ~/.pgpass                 (OBLIGATOIREMENT chmod 600)
+#   Windows (native)    : %APPDATA%\postgresql\pgpass.conf
+#
+# Remplacer :
+#   PROJECT_REF   -> ta ref projet Supabase
+#   REGION        -> ta région AWS
+#   MY_PASSWORD   -> ton mot de passe DB (Dashboard -> Settings -> Database)
+#
+# Une ligne par service défini dans pg_service.conf.
+# Le wildcard '*' est supporté sur hostname, port, database, username.
+#
+# CRITIQUE :
+#   - Sur Linux/macOS, psql REFUSERA de lire le fichier si chmod > 600
+#     (sécurité contre les autres utilisateurs du système).
+#   - Ne JAMAIS commit ce fichier. Le .gitignore l'exclut déjà.
+# =====================================================================
+
+
+# Session pooler
+aws-0-REGION.pooler.supabase.com:5432:postgres:postgres.PROJECT_REF:MY_PASSWORD
+
+# Connexion directe (IPv6)
+db.PROJECT_REF.supabase.co:5432:postgres:postgres:MY_PASSWORD
+
+# Transaction pooler
+aws-0-REGION.pooler.supabase.com:6543:postgres:postgres.PROJECT_REF:MY_PASSWORD
+
+
+# Exemple staging (décommenter si besoin)
+# aws-0-REGION.pooler.supabase.com:5432:postgres:postgres.STAGING_PROJECT_REF:STAGING_PASSWORD

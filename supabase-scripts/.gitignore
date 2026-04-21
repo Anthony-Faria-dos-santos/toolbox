@@ -1,0 +1,57 @@
+# =====================================================================
+# Secrets — ne JAMAIS commit
+# =====================================================================
+.env
+.env.*
+!.env.example
+*.pem
+*.key
+*.p12
+.pgpass
+secrets/
+credentials/
+
+# Configs psql (garder uniquement les .example versionnés)
+psql/pg_service.conf
+psql/pgpass
+psql/.pgpass
+
+# =====================================================================
+# IDE / Éditeurs
+# =====================================================================
+.idea/
+.vscode/
+*.iml
+*.ipr
+*.iws
+*.swp
+*.swo
+*~
+
+# DataGrip — garder la config projet partageable, exclure les settings perso
+.idea/workspace.xml
+.idea/tasks.xml
+.idea/usage.statistics.xml
+.idea/dataSources.local.xml
+.idea/dataSources/
+.idea/sqlDataSources.xml
+.idea/dynamic.xml
+.idea/uiDesigner.xml
+.idea/dbnavigator.xml
+
+# =====================================================================
+# OS
+# =====================================================================
+.DS_Store
+Thumbs.db
+desktop.ini
+$RECYCLE.BIN/
+
+# =====================================================================
+# Logs / temp
+# =====================================================================
+*.log
+*.tmp
+*.bak
+tmp/
+out/
