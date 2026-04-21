@@ -1,0 +1,59 @@
+# =====================================================================
+# toolbox/.gitattributes — line endings normalization
+# Garantit une représentation LF cohérente dans le repo, indépendamment
+# de la plateforme du contributeur (Windows CRLF vs macOS/Linux LF).
+# =====================================================================
+
+# Par défaut : auto-détection du texte, stocké en LF dans le repo.
+* text=auto eol=lf
+
+# -----------------------------------------------------------------
+# Fichiers qui DOIVENT rester en CRLF côté Windows
+# -----------------------------------------------------------------
+# Les .bat / .cmd legacy tolèrent LF depuis Win10 1803 mais certains
+# contextes (cmd.exe élevé, copie via USB) peuvent avoir des surprises.
+# On force CRLF pour éviter toute ambiguïté côté Windows.
+*.bat       text eol=crlf
+*.cmd       text eol=crlf
+
+# -----------------------------------------------------------------
+# Fichiers qui DOIVENT être en LF (scripts Unix / macOS)
+# -----------------------------------------------------------------
+*.sh        text eol=lf
+*.command   text eol=lf
+
+# -----------------------------------------------------------------
+# Scripts PowerShell : LF accepté partout, mais on fixe explicitement.
+# -----------------------------------------------------------------
+*.ps1       text eol=lf
+*.psm1      text eol=lf
+
+# -----------------------------------------------------------------
+# Sources TypeScript / JS
+# -----------------------------------------------------------------
+*.ts        text eol=lf
+*.tsx       text eol=lf
+*.js        text eol=lf
+*.jsx       text eol=lf
+*.json      text eol=lf
+
+# -----------------------------------------------------------------
+# Documentation + config
+# -----------------------------------------------------------------
+*.md        text eol=lf
+*.txt       text eol=lf
+*.sql       text eol=lf
+*.yml       text eol=lf
+*.yaml      text eol=lf
+*.toml      text eol=lf
+*.conf      text eol=lf
+*.example   text eol=lf
+
+# -----------------------------------------------------------------
+# Binaires : aucune normalisation
+# -----------------------------------------------------------------
+*.zip       binary
+*.png       binary
+*.jpg       binary
+*.pdf       binary
+*.ico       binary
