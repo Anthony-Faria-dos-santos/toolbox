@@ -1,0 +1,32 @@
+GuildVoiceManager {{VERSION}} — Installation Windows
+=====================================================
+
+Pre-requis : Windows 10/11 + Discord desktop installe.
+Git, Node.js et pnpm sont installes automatiquement si absents (via winget).
+
+1. Double-clique sur INSTALLER.bat
+   (si Windows SmartScreen affiche un avertissement bleu,
+   clique "Informations complementaires" puis "Executer quand meme")
+
+2. Clique "Oui" sur la demande de droits administrateur.
+
+3. Le script :
+   - Ferme Discord
+   - Clone le Vencord OFFICIEL (Vendicated/Vencord)
+   - Injecte le plugin GuildVoiceManager depuis ce dossier
+   - Installe les dependances + compile + injecte dans Discord
+
+4. Active le plugin :
+   Parametres > Vencord > Plugins > GuildVoiceManager
+   Puis Ctrl+R pour redemarrer Discord.
+
+Pour mettre a jour :
+   Relance INSTALLER.bat ou MISE-A-JOUR.bat (detection auto).
+   La MAJ re-synchronise Vencord sur l'upstream officiel + reinjecte
+   la derniere version du plugin.
+
+Desinstallation :
+   Depuis ~\Vencord, lance : pnpm uninject
+   Puis supprime le dossier ~\Vencord.
+
+Support : @AntoX aka NIXshade

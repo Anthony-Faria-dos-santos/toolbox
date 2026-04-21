@@ -1,0 +1,31 @@
+GuildVoiceManager {{VERSION}} — Installation macOS
+===================================================
+
+Pre-requis : macOS 12+ (Apple Silicon ou Intel) + Discord installe.
+Homebrew, Git, Node.js LTS et pnpm sont installes automatiquement si absents.
+
+1. Clic droit sur INSTALLER.command > "Ouvrir"
+   (la premiere fois, macOS Gatekeeper demande confirmation car le
+   script n'est pas signe — clique "Ouvrir" dans la popup)
+
+2. Le script :
+   - Ferme Discord
+   - Installe Homebrew si absent
+   - Clone le Vencord OFFICIEL (Vendicated/Vencord)
+   - Injecte le plugin GuildVoiceManager depuis ce dossier
+   - Installe les dependances + compile + injecte dans Discord
+
+3. Active le plugin :
+   Parametres > Vencord > Plugins > GuildVoiceManager
+   Puis Cmd+R pour redemarrer Discord.
+
+Pour mettre a jour :
+   Relance INSTALLER.command ou MISE-A-JOUR.command (detection auto).
+   La MAJ re-synchronise Vencord sur l'upstream officiel + reinjecte
+   la derniere version du plugin.
+
+Desinstallation :
+   Depuis ~/Vencord, lance : pnpm uninject
+   Puis supprime le dossier ~/Vencord.
+
+Support : @AntoX aka NIXshade

@@ -1,0 +1,25 @@
+# Artefacts de build ZIP versionnés — regenerables via installers/build.{sh,ps1}
+installers/dist/*
+!installers/dist/.gitkeep
+
+# Reliquats de zip sur filesystems FUSE / SMB (cf. GOTCHAS §9)
+installers/dist/zi[A-Za-z0-9]*
+
+# Dossier templates vide non-utilisable (mount permission blocks rmdir)
+installers/templates/
+
+# Node / pnpm / Vencord build outputs (si un dev clone Vencord en local dans le repo par erreur)
+node_modules/
+dist-build/
+*.log
+
+# OS junk
+desktop.ini
+.DS_Store
+Thumbs.db
+
+# Editor
+.idea/
+.vscode/
+*.swp
+*~

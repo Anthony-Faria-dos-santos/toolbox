@@ -1,0 +1,2 @@
+# Fichier sentinel — garde le dossier dist/ dans git même quand les ZIPs sont gitignorés.
+# Les artefacts ZIP sont regenerables via installers/build.sh ou build.ps1.

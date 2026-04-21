@@ -1,0 +1,53 @@
+# =====================================================================
+# toolbox/.gitignore — monorepo level
+# Exclusions partagées. Chaque sous-projet gère ses propres exclusions
+# via son propre .gitignore (supabase-scripts/.gitignore,
+# guildvoicemanager/.gitignore).
+# =====================================================================
+
+# =====================================================================
+# Secrets — ne JAMAIS commit (defense-in-depth : déjà dans les sous-.gitignore)
+# =====================================================================
+.env
+.env.*
+!.env.example
+*.pem
+*.key
+*.p12
+secrets/
+credentials/
+
+# =====================================================================
+# OS junk
+# =====================================================================
+.DS_Store
+Thumbs.db
+desktop.ini
+$RECYCLE.BIN/
+
+# =====================================================================
+# IDE / Éditeurs
+# =====================================================================
+.idea/
+.vscode/
+*.iml
+*.swp
+*.swo
+*~
+
+# =====================================================================
+# Logs / temp
+# =====================================================================
+*.log
+*.tmp
+*.bak
+tmp/
+out/
+
+# =====================================================================
+# Reliquats de l'ancien dossier "Vencord plugins_discord/"
+# (remplacé par guildvoicemanager/ depuis 2026-04)
+# Si ce dossier est encore présent sur disque pour des raisons de mount
+# permissions, on l'ignore explicitement pour ne pas polluer git.
+# =====================================================================
+Vencord plugins_discord/
